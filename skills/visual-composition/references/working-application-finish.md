@@ -10,6 +10,8 @@ Read for new or substantially changed dashboards, settings, editors, administrat
 - Make action, selection, focus, pending, and error roles recognizable across components. Keep emphasis proportional to importance; inactive chrome should not compete with the task.
 - Specify the whole component surface: a picker includes its opened list, a menu its items, and a dialog its content and return path. Reuse the existing component vocabulary rather than designing only the closed frame.
 
+For composition or spacing changes, read [Layout, rhythm, and density](layout-rhythm-density.md). It defines spacing relationships, persistent-region decisions, and transition checks rather than a mandatory page template.
+
 ## Distill: remove without losing meaning
 
 After the structure and relevant states exist, assess the changed region as a whole. Apply the entrypoint's secondary-copy check to all placements, including notes beside headings and below cards; moving text does not make it necessary:

@@ -112,6 +112,7 @@ Omit “ПОИСКИ ВАКАНСИЙ” above “Источники” when the
 
 Read only the reference relevant to the changed surface:
 
+- [Layout, rhythm, and density](references/layout-rhythm-density.md): grouping, whitespace, persistent chrome, spacing roles, and responsive structure. Read for a new working-screen composition or a substantial layout change.
 - [Typography, color, and states](references/visual-system.md): visual hierarchy, supported themes, or component presentation.
 - [Charts and data](references/charts-and-data.md): analytical graphics and their accessible alternatives.
 - [Durable design decisions](references/design-decisions.md): multi-page consistency or requested persistence of design choices.
@@ -146,7 +147,8 @@ Recompose deliberately at the point where relationships fail:
 4. Preserve reading/task order in the DOM as visual regions become sequential.
 5. Let text, cards, controls, and media wrap or shrink using grid/flex intrinsic sizing; fix the overflowing element rather than hiding page overflow.
 6. Set purposeful content measures on wide screens and readable spacing on narrow screens. Respect safe areas for edge-to-edge or sticky actions.
-7. Verify touch, pointer, keyboard, zoom, larger text, themes, locales, and long content at representative widths.
+7. Inspect intermediate and short/near-square layouts as applicable, including just below, at, and just above each changed layout threshold. Check task grouping and action placement, not only overflow; use the [layout reference](references/layout-rhythm-density.md) for the concrete checks.
+8. Verify touch, pointer, keyboard, zoom, larger text, themes, locales, and long content at affected sizes.
 
 Describe the transformation in user-facing terms—for example, “the filter summary remains above the results while advanced controls move into a labeled disclosure”—rather than only naming a breakpoint.
 

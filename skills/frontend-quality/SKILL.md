@@ -79,7 +79,8 @@ Read [Forms and feedback](references/forms-and-feedback.md) when changing input,
 - Recompose with grid, flexbox, intrinsic sizing, wrapping, and content-driven breakpoints before reaching for JavaScript measurement.
 - Let flexible children shrink (`min-width: 0` where needed); wrap or intentionally truncate long values while preserving access to the full value.
 - Fix the element that overflows. Do not hide page-level overflow to conceal clipping or broken geometry.
-- Check narrow, tablet, and wide layouts with short, typical, long, missing, malformed, localized, and zoomed content.
+- For layout changes, read [Responsive layout checks](references/responsive-layout-checks.md). Inspect affected threshold boundaries and interval interiors, including short/near-square windows where relevant. Check grouping, effective spacing, and action reachability as well as overflow.
+- Check affected layouts with short, typical, long, missing, malformed, localized, and zoomed content.
 - Preserve task order and DOM reading order as columns collapse; keep controls usable with touch, mouse, and keyboard.
 - Reserve space for images, charts, embeds, asynchronous labels, and deferred panels to avoid layout shifts.
 

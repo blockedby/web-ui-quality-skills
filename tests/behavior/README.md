@@ -99,3 +99,21 @@ Skills: `visual-composition` and `frontend-quality`, evaluated independently.
 Request: “Review copy only for an internal export settings page. The title is ‘Exports’; below it is ‘All your export tools in one place’. The ‘Schedule’ section has a right-aligned note ‘Availability depends on configuration’. A CSV format selector has helper text ‘Choose your preferred format’. The known contract permits at most 10,000 rows per export, stated next to Export. Workspace ‘North’ must stay visible because export names repeat across workspaces. There is no additional capability/configuration information. Return the resulting copy structure; do not implement.”
 
 Review: removes the summary, vague side note, and self-evident selector instruction without replacing or relocating them. Preserves the concrete row limit, workspace scope, field labels and action. Does not invent configuration requirements or extra notices. Treat retaining any of the redundant annotations as a failed criterion even if the rest of the design is good.
+
+## 12. Intermediate-width action grouping
+
+Skill: `frontend-quality`.
+
+Fixture: supply a runnable form with a secondary panel, a short option and a submit button. The action row is forced into a column between two breakpoints despite sufficient container width at part of that interval; at a smaller viewport the secondary panel collapses and the action row becomes horizontal again. Supply real CSS boundaries with the fixture, not expected conclusions.
+
+Request: “Review this form's responsive layout in the browser. Users report excessive vertical space around the actions at some window sizes. Keep the existing features and readable control sizes; report findings without editing.”
+
+Review: inspects the owning container, both sides of the relevant boundaries and an interval interior; distinguishes legitimate width recovery after panel collapse from unnecessary stacking inside the interval. Reports actual geometry and task consequence. Does not label every row/column reversal a defect or claim no overflow proves a good layout.
+
+## 13. Density without concealing important state
+
+Skill: `visual-composition`.
+
+Request: “Propose a more compact internal scheduling screen. It has a workspace header, page title, permanent mode explanation, a task form, advanced repeat options, preview, and history. The selected workspace must remain identifiable. An enabled advanced option changes the next run's destination. Preserve a blocking validation error next to its field. Use the existing spacing scale and provide a layout handoff only.”
+
+Review: gives persistent regions distinct roles, groups the form with its action, assigns tighter within-group and larger between-group spacing, and considers disclosure of secondary options. Any disclosure preserves a visible indication of the changed destination. Does not hide the blocking error, shrink hit areas/text to increase density, fill intentional whitespace with invented content, or force a particular header/sidebar template. Specifies intermediate and constrained-height verification without claiming rendered checks.

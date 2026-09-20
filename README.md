@@ -40,6 +40,10 @@ Optional external companions: [Anthropic frontend-design](https://github.com/ant
 
 The guidance adapts ideas from the optional external companions linked above: intentional visual decisions and critique (Anthropic), topic-specific UX guidance and shared/page design decisions (UI/UX Pro Max), and actionable review rules and weak/better examples (Vercel). It is written for this repository rather than copied as an external rule bundle. Universal row-count thresholds, forced typography casing, mandatory animation, and blanket bans on local horizontal scrolling are deliberately not adopted.
 
+### Layout and responsive verification
+
+`visual-composition` includes concrete guidance for spacing roles, effective gaps, task-oriented density, persistent chrome, and secondary controls. `frontend-quality` provides a scoped transition matrix: both sides of affected breakpoints, intermediate widths, short windows, and relevant zoom/content states. These adapt the structural assessment in [Impeccable layout](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/layout.md), with contextual disclosure informed by [Carbon](https://carbondesignsystem.com/patterns/disclosures-pattern/). Neither a fixed page template nor a blanket requirement to minimize whitespace is imposed.
+
 ### Working application finish
 
 For substantial working UI changes, `visual-composition` uses **operate → distill → polish**: organize around the next task, remove presentation that adds no meaning, then inspect the complete interactive path. `frontend-quality` adds component selection and opened-state verification. Native controls remain valid where they satisfy the requirements; no component library is mandated.
