@@ -34,6 +34,12 @@ Install only the relevant skills, then check that your agent discovers them. Kee
 
 Optional external companions: [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) for expressive visual direction, [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) for searchable design references, and [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) for an additional interface review or React-specific implementation guidance. These are not dependencies or bundled copies. Choose them for a concrete gap; preserve the project's existing design and behavior contracts when recommendations differ.
 
+## Focused guidance
+
+`visual-composition` includes references for typography and visual hierarchy, color/theme/state design, analytical charts, durable design decisions, operational screens, and weak/better examples. `frontend-quality` includes references for form validation and persistence, overlay focus and announcements, operational contracts, and interaction examples. Each skill routes to its own bundled references and can be installed independently.
+
+The guidance adapts ideas from the optional external companions linked above: intentional visual decisions and critique (Anthropic), topic-specific UX guidance and shared/page design decisions (UI/UX Pro Max), and actionable review rules and weak/better examples (Vercel). It is written for this repository rather than copied as an external rule bundle. Universal row-count thresholds, forced typography casing, mandatory animation, and blanket bans on local horizontal scrolling are deliberately not adopted.
+
 ## Local audit quick start
 
 The audit helper uses only the Python standard library for its static checks:

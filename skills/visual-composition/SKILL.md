@@ -30,6 +30,8 @@ Use this skill when a browser-visible surface needs a clear visual direction, no
 - **Implementation:** build and verify the requested surface, then report the result and remaining limits. A design handoff alone does not complete an implementation request.
 - **Review:** inspect the supplied surface and report actionable findings with evidence; do not redesign or edit it unless requested.
 
+In a handoff, distinguish supplied behavior, proposed visual choices, and unresolved consequential behavior. Do not present an unprovided selection, persistence, navigation-blocking, or mutation rule as established behavior; label it as a proposal or an implementation dependency.
+
 Use only the steps relevant to that mode and the size of the change. Routine styling choices do not require another approval; ask only when a missing decision materially changes the product contract.
 
 ## Start with a design brief
@@ -95,6 +97,17 @@ A named pattern is a starting structure. Combine or reject patterns when the con
 - Reuse a component when semantics and states match; do not maximize reuse by forcing different content into a universal configuration language.
 - For a new visual system, record concrete decisions: type roles and sizes, spacing scale, content widths, density, surface/border roles, and semantic colors. For an existing system, name the reused tokens and only the necessary exceptions. Avoid a new palette or a forced visual signature for a small edit.
 - Keep factual product copy and claims supplied by the brief. Visual polish cannot make invented content trustworthy.
+
+## Focused design references
+
+Read only the reference relevant to the changed surface:
+
+- [Typography, color, and states](references/visual-system.md): visual hierarchy, supported themes, or component presentation.
+- [Charts and data](references/charts-and-data.md): analytical graphics and their accessible alternatives.
+- [Durable design decisions](references/design-decisions.md): multi-page consistency or requested persistence of design choices.
+- [Decision examples](references/examples.md): ambiguous choices and concrete weak/better comparisons.
+
+For forms or overlays, specify validation, persistence, focus, and recovery behavior in the handoff rather than only drawing the ideal state. During implementation, verify those contracts using the existing component system.
 
 ## Tables and operational screens
 

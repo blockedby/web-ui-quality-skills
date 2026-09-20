@@ -26,6 +26,14 @@ Use this skill as an evidence-led implementation and review checklist for an exi
 
 If an input is missing, label the unknown. Do not invent product behavior when it would change a component contract, data flow, navigation path, permission boundary, or user consequence.
 
+## Match the requested work
+
+- **Planning:** inspect the relevant contracts and return a scoped plan with proposed verification; do not implement or claim checks were executed.
+- **Implementation:** make the requested change and verify the affected behavior.
+- **Review:** remain read-only unless fixes are requested; match source, specification, or runtime inspection to the requested review depth and label the evidence accordingly.
+
+Scale inspection and verification to the change. Trace only dependencies needed to establish affected contracts; a copy or token edit does not require an unrelated data-flow audit or a separately reported state matrix. New or substantially changed surfaces need broader state and viewport coverage.
+
 ## Inspect before changing
 
 1. Read the acceptance criteria and identify the primary task and the changed surface.
@@ -61,6 +69,9 @@ If an input is missing, label the unknown. Do not invent product behavior when i
 - Support keyboard activation, dismissal, navigation, focus return, and correct expanded/selected/disabled/pending semantics for composite controls.
 - Associate help and validation messages with their fields; do not communicate status by color alone.
 - Respect reduced motion, zoom, larger text, high contrast, forced colors, touch targets, paste, native editing, and password-manager behavior where applicable.
+- When changing colors, themes, or control states, measure rendered foreground/background pairs, accounting for opacity. For WCAG AA text, check 4.5:1 for ordinary text and 3:1 for large text; required non-text control/state cues generally need 3:1 against adjacent colors. Check focus visibility and affected combined states across supported themes, distinguish applicable exceptions, and report measured pairs without claiming a complete accessibility audit.
+
+Read [Forms and feedback](references/forms-and-feedback.md) when changing input, validation, submission, or persistence, and [Focus and overlays](references/focus-and-overlays.md) when changing dialogs, focus, dynamic announcements, or gesture controls. For ambiguous decisions, consult [Interaction examples](references/examples.md). Read only the relevant reference.
 
 ### 4. Responsive and content resilience
 
@@ -105,9 +116,11 @@ Before implementation or sign-off, mark each relevant row as implemented, review
 | Focus/semantics | Can a keyboard or assistive-technology user identify, operate, and recover from each control? |
 | Performance/motion | Does the changed interaction stay responsive and respect reduced motion? |
 
-Do not replace the whole surface with a spinner for a local request. Do not remove useful user input after a failed action. Warn before discarding unsaved work and confirm or undo destructive actions according to local conventions.
+Do not replace the whole surface with a spinner for a local request. Do not remove useful user input after a failed action. Preserve the existing unsaved-work, confirmation, and undo contracts. Flag unsafe or unspecified consequential discard paths rather than silently adding behavior; define the trigger and consequence when a new guard is explicitly in scope.
 
 ## Verification loop
+
+For implementation and the requested depth of review, use the applicable checks below. Planning outputs describe these as proposed checks. Choose affected states and viewports proportionally; do not treat unavailable runtime evidence as a pass.
 
 1. Run the narrowest applicable type, lint, unit, component, integration, and build checks after the latest change.
 2. Render the changed surface at representative narrow, medium, and wide viewports and inspect the actual result; implementation checks alone do not prove visual acceptance.

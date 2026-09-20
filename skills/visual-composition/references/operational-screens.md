@@ -16,6 +16,7 @@ Use for data-heavy work surfaces, applying only decisions relevant to the reques
 - Make sorting direction, result count scope, and pagination understandable. Do not invent totals when the API exposes only a partial count.
 - Show selection count and scope beside bulk actions. “Selected on this page” and “all matching results” have different consequences and must not look interchangeable.
 - Keep row navigation and row actions separately operable. Avoid hover-only access to required actions; include focus and touch treatments.
+- Do not infer filter-change selection resets, navigation locks during submission, or post-success selection cleanup from a page-change rule. Preserve known contracts and explicitly label any additional behavior as proposed or unresolved.
 - Make partial bulk failure actionable: identify affected records and preserve the context needed to retry or inspect them.
 
 ## Space and continuity
