@@ -47,6 +47,7 @@ Scale inspection and verification to the change. Trace only dependencies needed 
 ### 1. Contracts and reuse
 
 - Reuse shared components, layout wrappers, tokens, hooks, route helpers, form helpers, and API clients when their semantics and behavior match.
+- For composite controls, prefer the project's established accessible primitives over custom keyboard and focus logic. Read [Component choice and completion](references/component-completion.md) when adding or substantially changing pickers, menus, popovers, or dialogs. Native controls remain appropriate when they meet the required behavior and presentation.
 - Keep route orchestration near the route and reusable presentation or interaction in the repository's established shared layer.
 - Prefer small explicit variants and composition over a growing set of unrelated boolean props.
 - Preserve public props, events, routes, data shapes, focus order, and persisted state unless a deliberate breaking change is in scope.
@@ -124,9 +125,10 @@ For implementation and the requested depth of review, use the applicable checks 
 
 1. Run the narrowest applicable type, lint, unit, component, integration, and build checks after the latest change.
 2. Render the changed surface at representative narrow, medium, and wide viewports and inspect the actual result; implementation checks alone do not prove visual acceptance.
-3. Exercise the affected default, loading, empty, error, pending, permission, long-content, keyboard, and reduced-motion states.
+3. Exercise the affected default, loading, empty, error, pending, permission, long-content, keyboard, and reduced-motion states. For changed composite controls, inspect both the trigger and the opened surface; selecting a value programmatically does not verify the popup, keyboard behavior, or focus return.
 4. Review the diff for duplicated logic, incidental contract changes, hidden overflow, missing labels/focus, layout shifts, and accidental dependencies.
-5. Report the conclusion first, then changed files or findings, verification evidence, and remaining risks. Separate passed checks from not-run checks and open questions.
+5. Fix scoped defects in implementation mode and recheck affected behavior; in review mode, report them. Work in a bounded batch rather than endlessly restyling a passing surface.
+6. Report the conclusion first, then changed files or findings, verification evidence, and remaining risks. Separate functional and visual evidence. An unmet explicit acceptance criterion remains a failure even if unrelated checks pass; unobserved required states remain unverified.
 
 ## Non-goals and red flags
 

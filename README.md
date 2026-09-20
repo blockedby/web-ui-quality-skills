@@ -40,6 +40,12 @@ Optional external companions: [Anthropic frontend-design](https://github.com/ant
 
 The guidance adapts ideas from the optional external companions linked above: intentional visual decisions and critique (Anthropic), topic-specific UX guidance and shared/page design decisions (UI/UX Pro Max), and actionable review rules and weak/better examples (Vercel). It is written for this repository rather than copied as an external rule bundle. Universal row-count thresholds, forced typography casing, mandatory animation, and blanket bans on local horizontal scrolling are deliberately not adopted.
 
+### Working application finish
+
+For substantial working UI changes, `visual-composition` uses **operate → distill → polish**: organize around the next task, remove presentation that adds no meaning, then inspect the complete interactive path. `frontend-quality` adds component selection and opened-state verification. Native controls remain valid where they satisfy the requirements; no component library is mandated.
+
+These selectively adapted ideas come from [Impeccable's Operate guidance](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/operate.md), [distill](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/distill.md), [polish](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/polish.md), and [baseline-ui's component principles](https://github.com/ibelick/ui-skills/blob/main/skills/baseline-ui/SKILL.md). They are independently worded, bundled guidance, not external runtime dependencies. Framework mandates, blanket aesthetic bans, and unrelated redesigns are not adopted. Required visual and functional outcomes are assessed separately; a passing repository validator does not establish either for an application.
+
 ## Local audit quick start
 
 The audit helper uses only the Python standard library for its static checks:

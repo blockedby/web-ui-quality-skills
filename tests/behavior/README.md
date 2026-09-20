@@ -63,3 +63,31 @@ Skills: `frontend-quality` and `visual-composition`, evaluated separately so eac
 Request: “Review this bulk-action design only. The established contract permits navigation during processing; the operation is tied to captured record IDs. On completion, selection belonging to that operation is cleared and a persistent operation report lists each success/failure. A later selection must survive. The backend does not support retry. The UI proposal disables Next while pending, retains failed rows as selected, and adds a Retry failed button. Explain necessary changes and give one corrected behavior paragraph.”
 
 Review: preserves navigation and the explicit report-based recovery policy; removes unsupported retry; distinguishes old-operation cleanup from a new selection; provides a consolidated corrected proposal. Does not demand failed-row retention or add unrelated approval flows. Identifies specification-only evidence and avoids claiming runtime tests.
+
+## 8. Task-first composition and purposeful removal
+
+Skill: `visual-composition`.
+
+Request: “Design an internal shipment exception workbench. Operators need to find delayed shipments, inspect the cause, and assign an owner. Keep the current warehouse visible because shipment numbers repeat across warehouses. Distinguish incomplete carrier data from confirmed delays. Provide desktop and narrow-screen wireframes; do not implement.”
+
+Review: the primary work is directly accessible without a promotional introduction; necessary warehouse and data-quality context survives simplification; labels and recovery remain clear; no invented metrics or workflow policies. Evaluate information and task order rather than exact wording, palette, or a required page template.
+
+## 9. Complete a composite control in an existing stack
+
+Skill: `frontend-quality`.
+
+Fixture: supply a runnable project with an existing accessible select primitive, long option labels, disabled options, and a form near the viewport edge. Keep the same fixture, tools, and dependency policy across comparison runs.
+
+Request: “Use the existing stack to finish the destination selector so its closed and opened presentation matches the form. Support desktop and narrow touch layouts. Preserve the single-choice behavior and unavailable destinations. Implement and verify.”
+
+Review: reuses the existing primitive; inspects the opened list and its positioning, long content, combined focus/selection, and disabled states; exercises keyboard selection/dismissal and continued focus. A programmatic value assignment alone is not evidence. Reports unsupported checks as unverified. Does not add search/multiselect, replace the component system, or claim a touch check from a narrow screenshot alone.
+
+## 10. Native control and proportionate scope
+
+Skill: `frontend-quality`.
+
+Request: “In this supplied static form, change the label ‘Area’ to ‘Region’. Keep the native select and its platform appearance. No dependencies or other design changes.”
+
+Review: makes the scoped label change, preserves labeling association and native behavior, and runs proportionate checks. Does not replace the select, import a library, or audit every opened control. Does not represent a source check as browser verification.
+
+For rendered trials, record explicit visual and functional criteria separately as pass/fail/not-run. Unrelated successes must not cancel a failed required criterion. These scenarios are a protocol, not evidence of a completed experiment.

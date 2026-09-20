@@ -70,6 +70,10 @@ Choose a pattern because it expresses an information relationship, not because i
 
 A named pattern is a starting structure. Combine or reject patterns when the content relationship requires it; do not force narrative or hierarchy into interchangeable cards.
 
+## Working applications: operate, distill, polish
+
+For a new or substantially changed working application, read [Working application finish](references/working-application-finish.md). Use its three passes to prioritize the task, remove unnecessary presentation, and verify the interactive result. These are passes within the requested design, implementation, or review mode, not permission to redesign unrelated screens. For a small edit, apply only the affected decisions.
+
 ## Build hierarchy and flow
 
 - Establish one clear visual starting point for each page or major region.
@@ -155,7 +159,7 @@ Describe the transformation in user-facing terms—for example, “the filter su
 3. Define responsive transformations, relevant states, interaction feedback, media behavior, and reduced-motion behavior.
 4. In implementation mode, build with existing primitives and semantic controls; in design mode, specify the handoff; in review mode, inspect the existing result.
 5. For implementation or review, inspect the rendered surface at representative widths with realistic content. For a design-only task, specify the checks needed when implemented; do not claim they ran.
-6. Fix or report hierarchy, flow, content, state, accessibility, and overflow problems. Make a final removal pass for redundant copy and containers before finishing visual details.
+6. Fix or report hierarchy, flow, content, state, accessibility, and overflow problems. Distill redundant copy and containers, then polish the affected user path, including opened controls and recovery states. Preserve necessary context and the established visual identity.
 7. Return the requested deliverable: a concise design handoff, a verified implementation summary, or evidence-backed review findings. State material unknowns and distinguish rendered checks from proposed checks.
 
 ## Anti-patterns
