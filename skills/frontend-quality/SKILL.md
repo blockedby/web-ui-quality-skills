@@ -71,7 +71,13 @@ If an input is missing, label the unknown. Do not invent product behavior when i
 - Preserve task order and DOM reading order as columns collapse; keep controls usable with touch, mouse, and keyboard.
 - Reserve space for images, charts, embeds, asynchronous labels, and deferred panels to avoid layout shifts.
 
-### 5. Performance, motion, and media
+### 5. Purposeful headings and labels
+
+- Do not add unnecessary eyebrow headings, overlines, or decorative labels above titles. Remove them when they merely repeat the title, name an obvious category, or fill visual space.
+- Keep an overline only when it supplies distinct, task-relevant context that the title does not convey, such as the current project or a step in a workflow. Uppercase styling or an accent color is not a reason to add text.
+- For example, omit “ПОИСКИ ВАКАНСИЙ” above “Источники” on a vacancy-source screen: it consumes space without helping the user understand or operate the screen. Prefer the title alone and useful supporting instructions where needed.
+
+### 6. Performance, motion, and media
 
 - Measure a user-visible bottleneck before adding memoization, virtualization, layout reads, or other complexity.
 - Keep the initial route bundle limited to the first useful interaction; defer heavy editors, charts, media, optional panels, and third-party scripts when justified.
