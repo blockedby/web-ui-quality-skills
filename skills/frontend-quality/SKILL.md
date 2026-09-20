@@ -76,8 +76,13 @@ If an input is missing, label the unknown. Do not invent product behavior when i
 - Do not add unnecessary eyebrow headings, overlines, or decorative labels above titles. Remove them when they merely repeat the title, name an obvious category, or fill visual space.
 - Keep an overline only when it supplies distinct, task-relevant context that the title does not convey, such as the current project or a step in a workflow. Uppercase styling or an accent color is not a reason to add text.
 - For example, omit “ПОИСКИ ВАКАНСИЙ” above “Источники” on a vacancy-source screen: it consumes space without helping the user understand or operate the screen. Prefer the title alone and useful supporting instructions where needed.
+- Apply the same test to subtitles, helper copy, badges, and repeated navigation: retain text that changes a decision, clarifies scope, or explains recovery; remove narration of obvious controls. Preserve field labels and accessible names.
 
-### 6. Performance, motion, and media
+### 6. Operational screen contracts
+
+For changes involving tables, filters, pagination, selection, or bulk actions, read [Operational screen contracts](references/operational-screens.md). Preserve existing semantics and clarify missing consequential behavior before implementing it; the reference is not a requirement to add features.
+
+### 7. Performance, motion, and media
 
 - Measure a user-visible bottleneck before adding memoization, virtualization, layout reads, or other complexity.
 - Keep the initial route bundle limited to the first useful interaction; defer heavy editors, charts, media, optional panels, and third-party scripts when justified.

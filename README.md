@@ -24,6 +24,16 @@ The install source is `blockedby/web-ui-quality-skills`; the skill names map dir
 
 These are generic workflows. They do not replace a framework, invent product requirements, treat decoration as proof of quality, mutate a network, or deploy an application.
 
+## Choosing and combining skills
+
+- Use `visual-composition` for design decisions, implementation with visual direction, or visual review. The requested mode determines the deliverable; small edits do not need a full design brief.
+- Use `frontend-quality` for implementation contracts, state/data behavior, and evidence-backed review. Both skills include optional references for operational screens; read only the relevant reference.
+- Use `static-html-browser-audit` for its bounded local HTML checks. Dynamic application behavior requires a suitable browser workflow and is not proven by this helper.
+
+Install only the relevant skills, then check that your agent discovers them. Keeping this repository on disk does not itself load its instructions. If necessary, explicitly invoke an installed skill by name.
+
+Optional external companions: [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) for expressive visual direction, [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) for searchable design references, and [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) for an additional interface review or React-specific implementation guidance. These are not dependencies or bundled copies. Choose them for a concrete gap; preserve the project's existing design and behavior contracts when recommendations differ.
+
 ## Local audit quick start
 
 The audit helper uses only the Python standard library for its static checks:
@@ -47,6 +57,8 @@ From the repository root:
 ```
 
 Validation checks all three skill contracts and frontmatter, compiles the dependency-light helpers, runs a passing fixture through the static audit, and confirms that a deliberately broken fixture is detected. Browser-mode validation is run when Chromium is available.
+
+For behavioral evaluation, use the [manual scenarios](tests/behavior/README.md) to compare base and candidate instructions in fresh sessions. These cover redundant copy, necessary context, implementation vs. handoff, table semantics, review evidence, and small-task scope. The automated validator does not run these scenarios or prove that an agent follows the guidance.
 
 ## License
 
