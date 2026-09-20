@@ -26,6 +26,14 @@ Use this skill as an evidence-led implementation and review checklist for an exi
 
 If an input is missing, label the unknown. Do not invent product behavior when it would change a component contract, data flow, navigation path, permission boundary, or user consequence.
 
+## Match the requested work
+
+- **Planning:** inspect the relevant contracts and return a scoped plan with proposed verification; do not implement or claim checks were executed.
+- **Implementation:** make the requested change and verify the affected behavior.
+- **Review:** remain read-only unless fixes are requested; match source, specification, or runtime inspection to the requested review depth and label the evidence accordingly.
+
+Scale inspection and verification to the change. Trace only dependencies needed to establish affected contracts; a copy or token edit does not require an unrelated data-flow audit or a separately reported state matrix. New or substantially changed surfaces need broader state and viewport coverage.
+
 ## Inspect before changing
 
 1. Read the acceptance criteria and identify the primary task and the changed surface.
@@ -39,6 +47,7 @@ If an input is missing, label the unknown. Do not invent product behavior when i
 ### 1. Contracts and reuse
 
 - Reuse shared components, layout wrappers, tokens, hooks, route helpers, form helpers, and API clients when their semantics and behavior match.
+- For composite controls, prefer the project's established accessible primitives over custom keyboard and focus logic. Read [Component choice and completion](references/component-completion.md) when adding or substantially changing pickers, menus, popovers, or dialogs. Native controls remain appropriate when they meet the required behavior and presentation.
 - Keep route orchestration near the route and reusable presentation or interaction in the repository's established shared layer.
 - Prefer small explicit variants and composition over a growing set of unrelated boolean props.
 - Preserve public props, events, routes, data shapes, focus order, and persisted state unless a deliberate breaking change is in scope.
@@ -61,23 +70,39 @@ If an input is missing, label the unknown. Do not invent product behavior when i
 - Support keyboard activation, dismissal, navigation, focus return, and correct expanded/selected/disabled/pending semantics for composite controls.
 - Associate help and validation messages with their fields; do not communicate status by color alone.
 - Respect reduced motion, zoom, larger text, high contrast, forced colors, touch targets, paste, native editing, and password-manager behavior where applicable.
+- When changing colors, themes, or control states, measure rendered foreground/background pairs, accounting for opacity. For WCAG AA text, check 4.5:1 for ordinary text and 3:1 for large text; required non-text control/state cues generally need 3:1 against adjacent colors. Check focus visibility and affected combined states across supported themes, distinguish applicable exceptions, and report measured pairs without claiming a complete accessibility audit.
+
+Read [Forms and feedback](references/forms-and-feedback.md) when changing input, validation, submission, or persistence, and [Focus and overlays](references/focus-and-overlays.md) when changing dialogs, focus, dynamic announcements, or gesture controls. For ambiguous decisions, consult [Interaction examples](references/examples.md). Read only the relevant reference.
 
 ### 4. Responsive and content resilience
 
 - Recompose with grid, flexbox, intrinsic sizing, wrapping, and content-driven breakpoints before reaching for JavaScript measurement.
 - Let flexible children shrink (`min-width: 0` where needed); wrap or intentionally truncate long values while preserving access to the full value.
 - Fix the element that overflows. Do not hide page-level overflow to conceal clipping or broken geometry.
-- Check narrow, tablet, and wide layouts with short, typical, long, missing, malformed, localized, and zoomed content.
+- For layout changes, read [Responsive layout checks](references/responsive-layout-checks.md). Inspect affected threshold boundaries and interval interiors, including short/near-square windows where relevant. Check grouping, effective spacing, and action reachability as well as overflow.
+- Check affected layouts with short, typical, long, missing, malformed, localized, and zoomed content.
 - Preserve task order and DOM reading order as columns collapse; keep controls usable with touch, mouse, and keyboard.
 - Reserve space for images, charts, embeds, asynchronous labels, and deferred panels to avoid layout shifts.
 
 ### 5. Purposeful headings and labels
 
-- Do not add unnecessary eyebrow headings, overlines, or decorative labels above titles. Remove them when they merely repeat the title, name an obvious category, or fill visual space.
-- Keep an overline only when it supplies distinct, task-relevant context that the title does not convey, such as the current project or a step in a workflow. Uppercase styling or an accent color is not a reason to add text.
-- For example, omit “ПОИСКИ ВАКАНСИЙ” above “Источники” on a vacancy-source screen: it consumes space without helping the user understand or operate the screen. Prefer the title alone and useful supporting instructions where needed.
+For working applications (settings, dashboards, editors, and administration), **a heading has no subtitle, eyebrow, slogan, or side annotation by default**. This is an acceptance requirement, not an optional preference for minimalism. Apply it to page, section, card, and form headings. Explicitly requested copy or an established required content contract takes precedence; marketing/editorial content follows its own brief.
 
-### 6. Performance, motion, and media
+- Start with the heading and necessary actions. Do not create a supporting-text slot just because a layout template has one. A heading does not need a sentence underneath it to look finished.
+- Add supporting text only when it supplies a **specific fact needed at this decision** that is not already available in the heading, labels, controls, or nearby state. Valid reasons include disambiguating the active workspace, stating a consequential limit, explaining a non-obvious input format, or giving actionable recovery. The fact must come from the supplied or inspected product contract.
+- Summarizing the screen, listing its visible capabilities, telling users to use the visible controls, promising convenience, or adding a vague dependency/caution does not qualify. “Adds context,” “helps orientation,” and “balances the layout” are not sufficient justifications by themselves.
+- When supporting text fails this test, **delete it and its reserved space**. Do not shorten it into another slogan, relocate it beside the heading, move it into a tooltip, or invent a more specific claim to justify keeping it. Empty space does not require replacement copy.
+- Keep persistent field labels, accessible names, meaningful values/status, units, necessary scope, errors, and recovery instructions. Do not hide decision-critical information behind hover or remove mandated demo/data limitations. Avoid repeating the same notice in multiple regions unless each occurrence is needed at a separate decision.
+- Before delivery, inspect every added or changed piece of secondary copy: subtitles, overlines, right-aligned section notes, helper text, badges, and footnotes. Identify the concrete user mistake or missing decision-relevant fact that removal would cause. If neither exists, remove it. This reasoning belongs in the review process, not in new UI annotations or a mandatory user-facing report.
+- In implementation mode, remove violations within the changed surface before declaring it complete; in design mode, omit them from the handoff; in review mode, flag them with their location. Passing build or interaction tests does not waive this copy requirement. Do not expand a small edit into unrelated copy cleanup.
+
+For example, omit “ПОИСКИ ВАКАНСИЙ” above “Источники” when the surrounding product already establishes that context.
+
+### 6. Operational screen contracts
+
+For changes involving tables, filters, pagination, selection, or bulk actions, read [Operational screen contracts](references/operational-screens.md). Preserve existing semantics and clarify missing consequential behavior before implementing it; the reference is not a requirement to add features.
+
+### 7. Performance, motion, and media
 
 - Measure a user-visible bottleneck before adding memoization, virtualization, layout reads, or other complexity.
 - Keep the initial route bundle limited to the first useful interaction; defer heavy editors, charts, media, optional panels, and third-party scripts when justified.
@@ -100,15 +125,18 @@ Before implementation or sign-off, mark each relevant row as implemented, review
 | Focus/semantics | Can a keyboard or assistive-technology user identify, operate, and recover from each control? |
 | Performance/motion | Does the changed interaction stay responsive and respect reduced motion? |
 
-Do not replace the whole surface with a spinner for a local request. Do not remove useful user input after a failed action. Warn before discarding unsaved work and confirm or undo destructive actions according to local conventions.
+Do not replace the whole surface with a spinner for a local request. Do not remove useful user input after a failed action. Preserve the existing unsaved-work, confirmation, and undo contracts. Flag unsafe or unspecified consequential discard paths rather than silently adding behavior; define the trigger and consequence when a new guard is explicitly in scope.
 
 ## Verification loop
 
+For implementation and the requested depth of review, use the applicable checks below. Planning outputs describe these as proposed checks. Choose affected states and viewports proportionally; do not treat unavailable runtime evidence as a pass.
+
 1. Run the narrowest applicable type, lint, unit, component, integration, and build checks after the latest change.
 2. Render the changed surface at representative narrow, medium, and wide viewports and inspect the actual result; implementation checks alone do not prove visual acceptance.
-3. Exercise the affected default, loading, empty, error, pending, permission, long-content, keyboard, and reduced-motion states.
-4. Review the diff for duplicated logic, incidental contract changes, hidden overflow, missing labels/focus, layout shifts, and accidental dependencies.
-5. Report the conclusion first, then changed files or findings, verification evidence, and remaining risks. Separate passed checks from not-run checks and open questions.
+3. Exercise the affected default, loading, empty, error, pending, permission, long-content, keyboard, and reduced-motion states. For changed composite controls, inspect both the trigger and the opened surface; selecting a value programmatically does not verify the popup, keyboard behavior, or focus return.
+4. Review the diff for duplicated logic, incidental contract changes, hidden overflow, missing labels/focus, layout shifts, and accidental dependencies. Apply the [secondary-copy acceptance check](#5-purposeful-headings-and-labels) to the changed surface; do not pass a redundant caption because the rest of the interface works.
+5. Fix scoped defects in implementation mode and recheck affected behavior; in review mode, report them. Work in a bounded batch rather than endlessly restyling a passing surface.
+6. Report the conclusion first, then changed files or findings, verification evidence, and remaining risks. Separate functional and visual evidence. An unmet explicit acceptance criterion remains a failure even if unrelated checks pass; unobserved required states remain unverified.
 
 ## Non-goals and red flags
 

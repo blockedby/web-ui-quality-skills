@@ -24,6 +24,32 @@ The install source is `blockedby/web-ui-quality-skills`; the skill names map dir
 
 These are generic workflows. They do not replace a framework, invent product requirements, treat decoration as proof of quality, mutate a network, or deploy an application.
 
+## Choosing and combining skills
+
+- Use `visual-composition` for design decisions, implementation with visual direction, or visual review. The requested mode determines the deliverable; small edits do not need a full design brief.
+- Use `frontend-quality` for implementation contracts, state/data behavior, and evidence-backed review. Both skills include optional references for operational screens; read only the relevant reference.
+- Use `static-html-browser-audit` for its bounded local HTML checks. Dynamic application behavior requires a suitable browser workflow and is not proven by this helper.
+
+Install only the relevant skills, then check that your agent discovers them. Keeping this repository on disk does not itself load its instructions. If necessary, explicitly invoke an installed skill by name.
+
+Optional external companions: [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) for expressive visual direction, [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) for searchable design references, and [Vercel agent-skills](https://github.com/vercel-labs/agent-skills) for an additional interface review or React-specific implementation guidance. These are not dependencies or bundled copies. Choose them for a concrete gap; preserve the project's existing design and behavior contracts when recommendations differ.
+
+## Focused guidance
+
+`visual-composition` includes references for typography and visual hierarchy, color/theme/state design, analytical charts, durable design decisions, operational screens, and weak/better examples. `frontend-quality` includes references for form validation and persistence, overlay focus and announcements, operational contracts, and interaction examples. Each skill routes to its own bundled references and can be installed independently.
+
+The guidance adapts ideas from the optional external companions linked above: intentional visual decisions and critique (Anthropic), topic-specific UX guidance and shared/page design decisions (UI/UX Pro Max), and actionable review rules and weak/better examples (Vercel). It is written for this repository rather than copied as an external rule bundle. Universal row-count thresholds, forced typography casing, mandatory animation, and blanket bans on local horizontal scrolling are deliberately not adopted.
+
+### Layout and responsive verification
+
+`visual-composition` includes concrete guidance for spacing roles, effective gaps, task-oriented density, persistent chrome, and secondary controls. `frontend-quality` provides a scoped transition matrix: both sides of affected breakpoints, intermediate widths, short windows, and relevant zoom/content states. These adapt the structural assessment in [Impeccable layout](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/layout.md), with contextual disclosure informed by [Carbon](https://carbondesignsystem.com/patterns/disclosures-pattern/). Neither a fixed page template nor a blanket requirement to minimize whitespace is imposed.
+
+### Working application finish
+
+For substantial working UI changes, `visual-composition` uses **operate → distill → polish**: organize around the next task, remove presentation that adds no meaning, then inspect the complete interactive path. `frontend-quality` adds component selection and opened-state verification. Native controls remain valid where they satisfy the requirements; no component library is mandated.
+
+These selectively adapted ideas come from [Impeccable's Operate guidance](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/operate.md), [distill](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/distill.md), [polish](https://github.com/pbakaus/impeccable/blob/main/.agents/skills/impeccable/reference/polish.md), and [baseline-ui's component principles](https://github.com/ibelick/ui-skills/blob/main/skills/baseline-ui/SKILL.md). They are independently worded, bundled guidance, not external runtime dependencies. Framework mandates, blanket aesthetic bans, and unrelated redesigns are not adopted. Required visual and functional outcomes are assessed separately; a passing repository validator does not establish either for an application.
+
 ## Local audit quick start
 
 The audit helper uses only the Python standard library for its static checks:
@@ -47,6 +73,8 @@ From the repository root:
 ```
 
 Validation checks all three skill contracts and frontmatter, compiles the dependency-light helpers, runs a passing fixture through the static audit, and confirms that a deliberately broken fixture is detected. Browser-mode validation is run when Chromium is available.
+
+For behavioral evaluation, use the [manual scenarios](tests/behavior/README.md) to compare base and candidate instructions in fresh sessions. These cover redundant copy, necessary context, implementation vs. handoff, table semantics, review evidence, and small-task scope. The automated validator does not run these scenarios or prove that an agent follows the guidance.
 
 ## License
 

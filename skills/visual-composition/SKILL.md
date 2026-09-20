@@ -24,11 +24,19 @@ Use this skill when a browser-visible surface needs a clear visual direction, no
 - A responsive transformation that recomposes the surface rather than only shrinking it, plus relevant state, motion, media, and implementation handoff decisions.
 - Explicit unresolved design questions and constraints. Do not silently invent brand rules, information architecture, claims, or product behavior.
 
-This is a design and implementation handoff, not a screenshot scoring report or an excuse to replace an established system.
+## Match the requested work
+
+- **Design:** return an actionable composition and handoff; implement only when requested.
+- **Implementation:** build and verify the requested surface, then report the result and remaining limits. A design handoff alone does not complete an implementation request.
+- **Review:** inspect the supplied surface and report actionable findings with evidence; do not redesign or edit it unless requested.
+
+In a handoff, distinguish supplied behavior, proposed visual choices, and unresolved consequential behavior. Do not present an unprovided selection, persistence, navigation-blocking, or mutation rule as established behavior; label it as a proposal or an implementation dependency.
+
+Use only the steps relevant to that mode and the size of the change. Routine styling choices do not require another approval; ask only when a missing decision materially changes the product contract.
 
 ## Start with a design brief
 
-Record the smallest useful brief before choosing a visual treatment:
+For a new composition or substantial redesign, record the smallest useful brief before choosing a visual treatment. For a small edit, retain only the decisions affected by that edit:
 
 ```md
 Audience and usage scenario:
@@ -44,7 +52,7 @@ Motion and feedback intent:
 Forbidden or discouraged outcomes:
 ```
 
-Make each line concrete enough that another implementer can explain why the composition serves this content and task. If a line is unknown, preserve it as a design question.
+Make each line concrete enough that another implementer can explain why the composition serves this content and task. Reuse supplied context rather than asking the user to fill out a template. Resolve ordinary visual choices from the existing system; flag unknowns only where they affect the requested outcome.
 
 ## Choose structure by purpose
 
@@ -62,6 +70,10 @@ Choose a pattern because it expresses an information relationship, not because i
 
 A named pattern is a starting structure. Combine or reject patterns when the content relationship requires it; do not force narrative or hierarchy into interchangeable cards.
 
+## Working applications: operate, distill, polish
+
+For a new or substantially changed working application, read [Working application finish](references/working-application-finish.md). Use its three passes to prioritize the task, remove unnecessary presentation, and verify the interactive result. These are passes within the requested design, implementation, or review mode, not permission to redesign unrelated screens. For a small edit, apply only the affected decisions.
+
 ## Build hierarchy and flow
 
 - Establish one clear visual starting point for each page or major region.
@@ -72,6 +84,20 @@ A named pattern is a starting structure. Combine or reject patterns when the con
 - Give every prominent element a role in meaning, orientation, emphasis, feedback, or flow. Remove decoration that has no such role.
 - Keep headings scannable, body copy within a readable measure, and realistic content visible during design. Test short, typical, long, missing, malformed, and localized values.
 
+## Purposeful interface copy
+
+For working applications (settings, dashboards, editors, and administration), **a heading has no subtitle, eyebrow, slogan, or side annotation by default**. This is an acceptance requirement, not an optional preference for minimalism. Apply it to page, section, card, and form headings. Explicitly requested copy or an established required content contract takes precedence; marketing/editorial content follows its own brief.
+
+- Start with the heading and necessary actions. Do not create a supporting-text slot just because a layout template has one. A heading does not need a sentence underneath it to look finished.
+- Add supporting text only when it supplies a **specific fact needed at this decision** that is not already available in the heading, labels, controls, or nearby state. Valid reasons include disambiguating the active workspace, stating a consequential limit, explaining a non-obvious input format, or giving actionable recovery. The fact must come from the supplied or inspected product contract.
+- Summarizing the screen, listing its visible capabilities, telling users to use the visible controls, promising convenience, or adding a vague dependency/caution does not qualify. “Adds context,” “helps orientation,” and “balances the layout” are not sufficient justifications by themselves.
+- When supporting text fails this test, **delete it and its reserved space**. Do not shorten it into another slogan, relocate it beside the heading, move it into a tooltip, or invent a more specific claim to justify keeping it. Empty space does not require replacement copy.
+- Keep persistent field labels, accessible names, meaningful values/status, units, necessary scope, errors, and recovery instructions. Do not hide decision-critical information behind hover or remove mandated demo/data limitations. Avoid repeating the same notice in multiple regions unless each occurrence is needed at a separate decision.
+- Before delivery, inspect every added or changed piece of secondary copy: subtitles, overlines, right-aligned section notes, helper text, badges, and footnotes. Identify the concrete user mistake or missing decision-relevant fact that removal would cause. If neither exists, remove it. This reasoning belongs in the review process, not in new UI annotations or a mandatory user-facing report.
+- In implementation mode, remove violations within the changed surface before declaring it complete; in design mode, omit them from the handoff; in review mode, flag them with their location. Passing build or interaction tests does not waive this copy requirement. Do not expand a small edit into unrelated copy cleanup.
+
+Omit “ПОИСКИ ВАКАНСИЙ” above “Источники” when the surrounding product already establishes that context. Uppercase styling and accent color do not make redundant text useful.
+
 ## Preserve a design system
 
 - Inspect existing layout wrappers, primitives, tokens, interaction patterns, and nearby surfaces before adding visual rules.
@@ -79,7 +105,24 @@ A named pattern is a starting structure. Combine or reject patterns when the con
 - Keep token families intentional: primary action, supporting action, surface, boundary, emphasis, success, warning, and error should each have a stable role.
 - Prefer a small number of type levels, spacing increments, accent colors, and surface treatments with clear meaning.
 - Reuse a component when semantics and states match; do not maximize reuse by forcing different content into a universal configuration language.
+- For a new visual system, record concrete decisions: type roles and sizes, spacing scale, content widths, density, surface/border roles, and semantic colors. For an existing system, name the reused tokens and only the necessary exceptions. Avoid a new palette or a forced visual signature for a small edit.
 - Keep factual product copy and claims supplied by the brief. Visual polish cannot make invented content trustworthy.
+
+## Focused design references
+
+Read only the reference relevant to the changed surface:
+
+- [Layout, rhythm, and density](references/layout-rhythm-density.md): grouping, whitespace, persistent chrome, spacing roles, and responsive structure. Read for a new working-screen composition or a substantial layout change.
+- [Typography, color, and states](references/visual-system.md): visual hierarchy, supported themes, or component presentation.
+- [Charts and data](references/charts-and-data.md): analytical graphics and their accessible alternatives.
+- [Durable design decisions](references/design-decisions.md): multi-page consistency or requested persistence of design choices.
+- [Decision examples](references/examples.md): ambiguous choices and concrete weak/better comparisons.
+
+For forms or overlays, specify validation, persistence, focus, and recovery behavior in the handoff rather than only drawing the ideal state. During implementation, verify those contracts using the existing component system.
+
+## Tables and operational screens
+
+When the changed surface includes tables, filtering, bulk actions, or monitoring, read [Operational screen composition](references/operational-screens.md). Apply only patterns supported by the task; do not add a dashboard, metrics, or controls to satisfy a checklist.
 
 ## Design complete states and feedback
 
@@ -104,7 +147,8 @@ Recompose deliberately at the point where relationships fail:
 4. Preserve reading/task order in the DOM as visual regions become sequential.
 5. Let text, cards, controls, and media wrap or shrink using grid/flex intrinsic sizing; fix the overflowing element rather than hiding page overflow.
 6. Set purposeful content measures on wide screens and readable spacing on narrow screens. Respect safe areas for edge-to-edge or sticky actions.
-7. Verify touch, pointer, keyboard, zoom, larger text, themes, locales, and long content at representative widths.
+7. Inspect intermediate and short/near-square layouts as applicable, including just below, at, and just above each changed layout threshold. Check task grouping and action placement, not only overflow; use the [layout reference](references/layout-rhythm-density.md) for the concrete checks.
+8. Verify touch, pointer, keyboard, zoom, larger text, themes, locales, and long content at affected sizes.
 
 Describe the transformation in user-facing terms—for example, “the filter summary remains above the results while advanced controls move into a labeled disclosure”—rather than only naming a breakpoint.
 
@@ -121,10 +165,10 @@ Describe the transformation in user-facing terms—for example, “the filter su
 1. Read the brief, references, current system, and constraints.
 2. Select a structure that matches the content relationship and write the hierarchy and reading order before decoration.
 3. Define responsive transformations, relevant states, interaction feedback, media behavior, and reduced-motion behavior.
-4. Implement with existing primitives and semantic controls; keep uncertain product decisions explicit.
-5. Render representative widths and realistic content while the surface is easy to change.
-6. Fix hierarchy, flow, content, state, accessibility, and overflow problems before finishing visual details.
-7. Return only the design handoff: brief, pattern and rationale, hierarchy/flow, state behavior, responsive transformation, reuse targets, unresolved questions, and anti-patterns to avoid.
+4. In implementation mode, build with existing primitives and semantic controls; in design mode, specify the handoff; in review mode, inspect the existing result.
+5. For implementation or review, inspect the rendered surface at representative widths with realistic content. For a design-only task, specify the checks needed when implemented; do not claim they ran.
+6. Fix or report hierarchy, flow, content, state, accessibility, and overflow problems. Distill redundant copy and containers, then polish the affected user path, including opened controls and recovery states. Preserve necessary context and the established visual identity.
+7. Return the requested deliverable: a concise design handoff, a verified implementation summary, or evidence-backed review findings. State material unknowns and distinguish rendered checks from proposed checks.
 
 ## Anti-patterns
 
