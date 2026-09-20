@@ -52,9 +52,7 @@ Request: “Review the wording only: a settings screen has title ‘Notification
 
 Review: recommends removing or making the redundant subtitle useful, retains the field label, and avoids a full design brief, palette, implementation, or unrelated interaction audit.
 
-## Additional coverage and recorded evaluation
-
-The [2026-09-21 evaluation report](../../reports/2026-09-21-skill-evaluation.md) records actual subagent review/application trials, found failures, revisions, and evidence limits. It includes reproducible task descriptions for a multi-workspace transaction handoff, faulty form/focus behavior, and conflicting persisted design decisions. These were qualitative text tasks, not execution of every scenario above or a base/candidate benchmark.
+## Additional coverage
 
 For future evaluations, add a rendered implementation trial covering light/dark combined states, long identifiers, form rejection, and modal focus return. Keep expected outcomes with the evaluator; do not give the implementing agent its scorecard or previous findings in a blind comparison.
 
