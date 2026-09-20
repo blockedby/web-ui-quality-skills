@@ -85,10 +85,17 @@ Read [Forms and feedback](references/forms-and-feedback.md) when changing input,
 
 ### 5. Purposeful headings and labels
 
-- Do not add unnecessary eyebrow headings, overlines, or decorative labels above titles. Remove them when they merely repeat the title, name an obvious category, or fill visual space.
-- Keep an overline only when it supplies distinct, task-relevant context that the title does not convey, such as the current project or a step in a workflow. Uppercase styling or an accent color is not a reason to add text.
-- For example, omit “ПОИСКИ ВАКАНСИЙ” above “Источники” on a vacancy-source screen: it consumes space without helping the user understand or operate the screen. Prefer the title alone and useful supporting instructions where needed.
-- Apply the same test to subtitles, helper copy, badges, and repeated navigation: retain text that changes a decision, clarifies scope, or explains recovery; remove narration of obvious controls. Preserve field labels and accessible names.
+For working applications (settings, dashboards, editors, and administration), **a heading has no subtitle, eyebrow, slogan, or side annotation by default**. This is an acceptance requirement, not an optional preference for minimalism. Apply it to page, section, card, and form headings. Explicitly requested copy or an established required content contract takes precedence; marketing/editorial content follows its own brief.
+
+- Start with the heading and necessary actions. Do not create a supporting-text slot just because a layout template has one. A heading does not need a sentence underneath it to look finished.
+- Add supporting text only when it supplies a **specific fact needed at this decision** that is not already available in the heading, labels, controls, or nearby state. Valid reasons include disambiguating the active workspace, stating a consequential limit, explaining a non-obvious input format, or giving actionable recovery. The fact must come from the supplied or inspected product contract.
+- Summarizing the screen, listing its visible capabilities, telling users to use the visible controls, promising convenience, or adding a vague dependency/caution does not qualify. “Adds context,” “helps orientation,” and “balances the layout” are not sufficient justifications by themselves.
+- When supporting text fails this test, **delete it and its reserved space**. Do not shorten it into another slogan, relocate it beside the heading, move it into a tooltip, or invent a more specific claim to justify keeping it. Empty space does not require replacement copy.
+- Keep persistent field labels, accessible names, meaningful values/status, units, necessary scope, errors, and recovery instructions. Do not hide decision-critical information behind hover or remove mandated demo/data limitations. Avoid repeating the same notice in multiple regions unless each occurrence is needed at a separate decision.
+- Before delivery, inspect every added or changed piece of secondary copy: subtitles, overlines, right-aligned section notes, helper text, badges, and footnotes. Identify the concrete user mistake or missing decision-relevant fact that removal would cause. If neither exists, remove it. This reasoning belongs in the review process, not in new UI annotations or a mandatory user-facing report.
+- In implementation mode, remove violations within the changed surface before declaring it complete; in design mode, omit them from the handoff; in review mode, flag them with their location. Passing build or interaction tests does not waive this copy requirement. Do not expand a small edit into unrelated copy cleanup.
+
+For example, omit “ПОИСКИ ВАКАНСИЙ” above “Источники” when the surrounding product already establishes that context.
 
 ### 6. Operational screen contracts
 
@@ -126,7 +133,7 @@ For implementation and the requested depth of review, use the applicable checks 
 1. Run the narrowest applicable type, lint, unit, component, integration, and build checks after the latest change.
 2. Render the changed surface at representative narrow, medium, and wide viewports and inspect the actual result; implementation checks alone do not prove visual acceptance.
 3. Exercise the affected default, loading, empty, error, pending, permission, long-content, keyboard, and reduced-motion states. For changed composite controls, inspect both the trigger and the opened surface; selecting a value programmatically does not verify the popup, keyboard behavior, or focus return.
-4. Review the diff for duplicated logic, incidental contract changes, hidden overflow, missing labels/focus, layout shifts, and accidental dependencies.
+4. Review the diff for duplicated logic, incidental contract changes, hidden overflow, missing labels/focus, layout shifts, and accidental dependencies. Apply the [secondary-copy acceptance check](#5-purposeful-headings-and-labels) to the changed surface; do not pass a redundant caption because the rest of the interface works.
 5. Fix scoped defects in implementation mode and recheck affected behavior; in review mode, report them. Work in a bounded batch rather than endlessly restyling a passing surface.
 6. Report the conclusion first, then changed files or findings, verification evidence, and remaining risks. Separate functional and visual evidence. An unmet explicit acceptance criterion remains a failure even if unrelated checks pass; unobserved required states remain unverified.
 

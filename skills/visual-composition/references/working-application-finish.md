@@ -5,14 +5,14 @@ Read for new or substantially changed dashboards, settings, editors, administrat
 ## Operate: compose around the next task
 
 - Identify what the user needs to see or do next. Give that task useful space and direct access; do not place it below a promotional introduction or a large inventory merely to balance the layout.
-- Default to a descriptive title with necessary actions. Add scope, status, or instructions only when they change interpretation or enable a decision. An established workspace indicator or meaningful workflow step can remain necessary context.
+- Default to a descriptive title with necessary actions and no supporting sentence. Apply the [Purposeful interface copy](../SKILL.md#purposeful-interface-copy) acceptance rule before adding an exception; a generic claim of helpful context is insufficient.
 - Prefer familiar controls, readable working typography, and density suited to scanning and input. A new visual signature is optional; consistent behavior across screens is essential.
 - Make action, selection, focus, pending, and error roles recognizable across components. Keep emphasis proportional to importance; inactive chrome should not compete with the task.
 - Specify the whole component surface: a picker includes its opened list, a menu its items, and a dialog its content and return path. Reuse the existing component vocabulary rather than designing only the closed frame.
 
 ## Distill: remove without losing meaning
 
-After the structure and relevant states exist, assess the changed region as a whole:
+After the structure and relevant states exist, assess the changed region as a whole. Apply the entrypoint's secondary-copy check to all placements, including notes beside headings and below cards; moving text does not make it necessary:
 
 - For supporting text, badges, and decorative containers, ask what information or operation would be lost by removal. Remove repeated explanations, self-evident instructions, slogans, ornamental numbering, and wrappers that contribute no useful grouping.
 - Do not move redundant copy into a tooltip or invent replacement copy to preserve a layout slot. Reflow the freed space toward the task.

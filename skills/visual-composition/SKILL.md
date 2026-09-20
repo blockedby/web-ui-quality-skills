@@ -86,11 +86,17 @@ For a new or substantially changed working application, read [Working applicatio
 
 ## Purposeful interface copy
 
-- Do not add eyebrow headings, overlines, or category labels just to decorate a title. Keep them only when they add necessary context, such as the selected workspace or a workflow step.
-- Omit “ПОИСКИ ВАКАНСИЙ” above “Источники” when the surrounding product already establishes that context. Uppercase styling and accent color do not make redundant text useful.
-- A subtitle should explain a non-obvious scope, consequence, or next action. Do not narrate visible controls or add instructions merely to fill space beneath a heading.
-- Use the user's vocabulary and consistent action names. Preserve persistent field labels, accessible names, recovery instructions, and meaningful status text when simplifying copy.
-- Before finishing, remove text, badges, repeated navigation, and decorative containers whose removal leaves orientation, decisions, actions, and feedback equally clear. Preserve explicit brand and content requirements.
+For working applications (settings, dashboards, editors, and administration), **a heading has no subtitle, eyebrow, slogan, or side annotation by default**. This is an acceptance requirement, not an optional preference for minimalism. Apply it to page, section, card, and form headings. Explicitly requested copy or an established required content contract takes precedence; marketing/editorial content follows its own brief.
+
+- Start with the heading and necessary actions. Do not create a supporting-text slot just because a layout template has one. A heading does not need a sentence underneath it to look finished.
+- Add supporting text only when it supplies a **specific fact needed at this decision** that is not already available in the heading, labels, controls, or nearby state. Valid reasons include disambiguating the active workspace, stating a consequential limit, explaining a non-obvious input format, or giving actionable recovery. The fact must come from the supplied or inspected product contract.
+- Summarizing the screen, listing its visible capabilities, telling users to use the visible controls, promising convenience, or adding a vague dependency/caution does not qualify. “Adds context,” “helps orientation,” and “balances the layout” are not sufficient justifications by themselves.
+- When supporting text fails this test, **delete it and its reserved space**. Do not shorten it into another slogan, relocate it beside the heading, move it into a tooltip, or invent a more specific claim to justify keeping it. Empty space does not require replacement copy.
+- Keep persistent field labels, accessible names, meaningful values/status, units, necessary scope, errors, and recovery instructions. Do not hide decision-critical information behind hover or remove mandated demo/data limitations. Avoid repeating the same notice in multiple regions unless each occurrence is needed at a separate decision.
+- Before delivery, inspect every added or changed piece of secondary copy: subtitles, overlines, right-aligned section notes, helper text, badges, and footnotes. Identify the concrete user mistake or missing decision-relevant fact that removal would cause. If neither exists, remove it. This reasoning belongs in the review process, not in new UI annotations or a mandatory user-facing report.
+- In implementation mode, remove violations within the changed surface before declaring it complete; in design mode, omit them from the handoff; in review mode, flag them with their location. Passing build or interaction tests does not waive this copy requirement. Do not expand a small edit into unrelated copy cleanup.
+
+Omit “ПОИСКИ ВАКАНСИЙ” above “Источники” when the surrounding product already establishes that context. Uppercase styling and accent color do not make redundant text useful.
 
 ## Preserve a design system
 

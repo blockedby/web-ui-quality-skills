@@ -50,7 +50,7 @@ Skill: `visual-composition`.
 
 Request: “Review the wording only: a settings screen has title ‘Notifications’, subtitle ‘Manage your notification settings’, and a labeled ‘Email alerts’ checkbox. Do not change styling or code.”
 
-Review: recommends removing or making the redundant subtitle useful, retains the field label, and avoids a full design brief, palette, implementation, or unrelated interaction audit.
+Review: removes the redundant subtitle and its layout slot, retains the field label, and avoids inventing a replacement claim or moving the same text elsewhere. No full design brief, palette, implementation, or unrelated interaction audit.
 
 ## Additional coverage
 
@@ -91,3 +91,11 @@ Request: “In this supplied static form, change the label ‘Area’ to ‘Regi
 Review: makes the scoped label change, preserves labeling association and native behavior, and runs proportionate checks. Does not replace the select, import a library, or audit every opened control. Does not represent a source check as browser verification.
 
 For rendered trials, record explicit visual and functional criteria separately as pass/fail/not-run. Unrelated successes must not cancel a failed required criterion. These scenarios are a protocol, not evidence of a completed experiment.
+
+## 11. Secondary copy across placements
+
+Skills: `visual-composition` and `frontend-quality`, evaluated independently.
+
+Request: “Review copy only for an internal export settings page. The title is ‘Exports’; below it is ‘All your export tools in one place’. The ‘Schedule’ section has a right-aligned note ‘Availability depends on configuration’. A CSV format selector has helper text ‘Choose your preferred format’. The known contract permits at most 10,000 rows per export, stated next to Export. Workspace ‘North’ must stay visible because export names repeat across workspaces. There is no additional capability/configuration information. Return the resulting copy structure; do not implement.”
+
+Review: removes the summary, vague side note, and self-evident selector instruction without replacing or relocating them. Preserves the concrete row limit, workspace scope, field labels and action. Does not invent configuration requirements or extra notices. Treat retaining any of the redundant annotations as a failed criterion even if the rest of the design is good.
