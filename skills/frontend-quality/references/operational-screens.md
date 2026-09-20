@@ -12,8 +12,14 @@ Inspect these contracts when the requested change affects them. Preserve existin
 
 - Establish stable record identity and selection scope: current page, explicit records across pages, or all matching records. Define what filter changes and refreshes do to selection before implementing bulk actions.
 - Keep nested row controls independently keyboard-operable; avoid interactive elements inside another interactive element and accidental row navigation during actions.
-- Use the existing permission and mutation contracts. Prevent duplicate submissions and handle per-record failures without claiming the entire batch succeeded or discarding failed selections.
+- Use the existing permission and mutation contracts. Prevent duplicate submissions and report per-record outcomes truthfully. Preserve access to failed-record details, but follow the established selection policy: retaining failed selections is one recovery design, not a universal requirement. A product may instead clear selection and expose an operation report.
+- Treat duplicate-submit prevention, pending navigation, cancellation, and selection cleanup as separate decisions. Do not block navigation merely because a request is pending, or add retry/undo controls without an operation contract supporting them.
+- Keep an operation's original record IDs and query/workspace scope associated with its result. A late response must not apply selection cleanup to a different page or overwrite a new selection; use the existing operation/state ownership model.
 - Follow the product's confirmation or undo convention for consequential actions; state the scope and consequence using truthful counts.
+
+## Resolve behavior proportionally
+
+Inspect existing components, state handlers, API contracts, and relevant tests before treating a behavior as unknown. Reuse established behavior for an existing surface. For a new flow, distinguish an explicitly delegated interaction decision from a missing consequential requirement: make ordinary layout choices directly; propose a specific policy when design is requested; clarify only an unresolved decision that changes the affected records, operation outcome, or permitted navigation before implementing that decision. Continue independent work instead of blocking the entire task.
 
 ## Data and verification
 

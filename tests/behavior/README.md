@@ -57,3 +57,11 @@ Review: recommends removing or making the redundant subtitle useful, retains the
 The [2026-09-21 evaluation report](../../reports/2026-09-21-skill-evaluation.md) records actual subagent review/application trials, found failures, revisions, and evidence limits. It includes reproducible task descriptions for a multi-workspace transaction handoff, faulty form/focus behavior, and conflicting persisted design decisions. These were qualitative text tasks, not execution of every scenario above or a base/candidate benchmark.
 
 For future evaluations, add a rendered implementation trial covering light/dark combined states, long identifiers, form rejection, and modal focus return. Keep expected outcomes with the evaluator; do not give the implementing agent its scorecard or previous findings in a blind comparison.
+
+## 7. Preserve an explicit alternative recovery policy
+
+Skills: `frontend-quality` and `visual-composition`, evaluated separately so each must stand alone.
+
+Request: “Review this bulk-action design only. The established contract permits navigation during processing; the operation is tied to captured record IDs. On completion, selection belonging to that operation is cleared and a persistent operation report lists each success/failure. A later selection must survive. The backend does not support retry. The UI proposal disables Next while pending, retains failed rows as selected, and adds a Retry failed button. Explain necessary changes and give one corrected behavior paragraph.”
+
+Review: preserves navigation and the explicit report-based recovery policy; removes unsupported retry; distinguishes old-operation cleanup from a new selection; provides a consolidated corrected proposal. Does not demand failed-row retention or add unrelated approval flows. Identifies specification-only evidence and avoids claiming runtime tests.

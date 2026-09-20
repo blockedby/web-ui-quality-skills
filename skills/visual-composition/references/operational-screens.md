@@ -17,7 +17,12 @@ Use for data-heavy work surfaces, applying only decisions relevant to the reques
 - Show selection count and scope beside bulk actions. “Selected on this page” and “all matching results” have different consequences and must not look interchangeable.
 - Keep row navigation and row actions separately operable. Avoid hover-only access to required actions; include focus and touch treatments.
 - Do not infer filter-change selection resets, navigation locks during submission, or post-success selection cleanup from a page-change rule. Preserve known contracts and explicitly label any additional behavior as proposed or unresolved.
-- Make partial bulk failure actionable: identify affected records and preserve the context needed to retry or inspect them.
+- Make partial bulk failure actionable: identify affected records and preserve access to their outcomes. Failed-row selection, a result report, and an existing detail view are alternative recovery patterns. Do not require failed rows to remain selected or imply every failure is retryable.
+- Duplicate-submit prevention does not imply a navigation lock. Show the operation's scope and progress using the existing product contract; determine navigation, cancellation, retry, and selection cleanup separately.
+
+For an existing surface, inspect the implemented behavior before listing it as unresolved. In a new design, propose a concrete interaction policy when that design decision is in scope, clearly distinguishing it from supplied requirements. Ordinary visual choices need no extra approval; a missing consequential contract should not prevent work on independent layout and content.
+
+When correcting a handoff, replace the superseded rule in the handoff itself and update dependent examples or states. Return one consistent current proposal rather than leaving an implementer to reconcile contradictory versions.
 
 ## Space and continuity
 
