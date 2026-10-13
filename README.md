@@ -18,7 +18,7 @@ The install source is `blockedby/web-ui-quality-skills`; the skill names map dir
 
 | Skill | Use it for | Contract |
 | --- | --- | --- |
-| [`frontend-quality`](skills/frontend-quality/SKILL.md) | Implementation and review of an existing frontend | Takes requirements and the current frontend stack; returns evidence-backed implementation or review guidance. |
+| [`frontend-quality`](skills/frontend-quality/SKILL.md) | Implementation and review of new or existing frontends | Takes requirements and the current frontend stack; returns evidence-backed implementation or review guidance. |
 | [`visual-composition`](skills/visual-composition/SKILL.md) | Turning a visual brief into a product-specific surface | Takes a visual brief; returns coherent hierarchy, composition, states, and responsive decisions. |
 | [`static-html-browser-audit`](skills/static-html-browser-audit/SKILL.md) | Fast, local checks for static HTML pages | Takes local HTML paths and an optional viewport; checks parsing, dependencies, local links, and horizontal overflow. |
 
@@ -39,6 +39,10 @@ Optional external companions: [Anthropic frontend-design](https://github.com/ant
 `visual-composition` includes references for typography and visual hierarchy, color/theme/state design, analytical charts, durable design decisions, operational screens, and weak/better examples. `frontend-quality` includes references for form validation and persistence, overlay focus and announcements, operational contracts, and interaction examples. Each skill routes to its own bundled references and can be installed independently.
 
 The guidance adapts ideas from the optional external companions linked above: intentional visual decisions and critique (Anthropic), topic-specific UX guidance and shared/page design decisions (UI/UX Pro Max), and actionable review rules and weak/better examples (Vercel). It is written for this repository rather than copied as an external rule bundle. Universal row-count thresholds, forced typography casing, mandatory animation, and blanket bans on local horizontal scrolling are deliberately not adopted.
+
+### New design versus product evolution
+
+Both skills distinguish extending an established visual language from creating one. For a new product or explicit redesign, their bundled `new-interface-direction.md` references guide a brief comparison of structurally different compositions and a choice of typography, proportions, density, and surface roles before implementation. Small edits retain the existing direction. Accessibility, interaction, responsive behavior, and the secondary-copy acceptance rule remain requirements in either path; minimalism is not a required aesthetic.
 
 ### Layout and responsive verification
 

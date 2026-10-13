@@ -6,7 +6,7 @@ Read for new or substantially changed dashboards, settings, editors, administrat
 
 - Identify what the user needs to see or do next. Give that task useful space and direct access; do not place it below a promotional introduction or a large inventory merely to balance the layout.
 - Default to a descriptive title with necessary actions and no supporting sentence. Apply the [Purposeful interface copy](../SKILL.md#purposeful-interface-copy) acceptance rule before adding an exception; a generic claim of helpful context is insufficient.
-- Prefer familiar controls, readable working typography, and density suited to scanning and input. A new visual signature is optional; consistent behavior across screens is essential.
+- Prefer familiar controls, readable working typography, and density suited to scanning and input. For a new product, carry the selected visual direction through these choices; for an existing product, preserve its identity. Consistent behavior does not require a neutral or uniform aesthetic.
 - Make action, selection, focus, pending, and error roles recognizable across components. Keep emphasis proportional to importance; inactive chrome should not compete with the task.
 - Specify the whole component surface: a picker includes its opened list, a menu its items, and a dialog its content and return path. Reuse the existing component vocabulary rather than designing only the closed frame.
 

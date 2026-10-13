@@ -34,6 +34,12 @@ In a handoff, distinguish supplied behavior, proposed visual choices, and unreso
 
 Use only the steps relevant to that mode and the size of the change. Routine styling choices do not require another approval; ask only when a missing decision materially changes the product contract.
 
+## Choose the design scope
+
+For an existing product, evolve its established visual language within the requested scope. For a new product or explicit redesign, read [New interface direction](references/new-interface-direction.md) before choosing the shell. A starter project or component library supplies implementation primitives, not the product's composition or identity. During review, assess the chosen direction against its brief rather than automatically redesigning it.
+
+Quality requirements constrain usability and content integrity; they do not mandate a minimalist style. Keep the secondary-copy acceptance rule in every direction.
+
 ## Start with a design brief
 
 For a new composition or substantial redesign, record the smallest useful brief before choosing a visual treatment. For a small edit, retain only the decisions affected by that edit:

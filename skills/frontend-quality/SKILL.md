@@ -1,12 +1,12 @@
 ---
 name: frontend-quality
-description: Use when planning, implementing, or reviewing frontend code changes against an existing product stack, UI contract, and fresh verification evidence.
+description: Use when planning, implementing, or reviewing frontend code changes for new or existing products, with deliberate visual direction, UI contracts, and fresh verification evidence.
 license: MIT
 ---
 
 # Frontend Quality
 
-Use this skill as an evidence-led implementation and review checklist for an existing frontend. It improves the changed surface without silently replacing its framework, data flow, visual system, or public behavior.
+Use this skill to implement or review a frontend against its product task and verification evidence. Distinguish creating a visual system from extending one; preserve established behavior and technical contracts in both cases.
 
 ## Contract
 
@@ -33,6 +33,14 @@ If an input is missing, label the unknown. Do not invent product behavior when i
 - **Review:** remain read-only unless fixes are requested; match source, specification, or runtime inspection to the requested review depth and label the evidence accordingly.
 
 Scale inspection and verification to the change. Trace only dependencies needed to establish affected contracts; a copy or token edit does not require an unrelated data-flow audit or a separately reported state matrix. New or substantially changed surfaces need broader state and viewport coverage.
+
+## Choose the design scope
+
+- **Existing product:** inspect and extend its visual language. Preserve successful typography, composition, density, and component roles; change them when the requested work warrants it. A small edit does not need competing design directions.
+- **New product or explicit redesign:** establish a visual direction before coding the shell. Read [New interface direction](references/new-interface-direction.md). A technical starter or component library is not an established product identity.
+- **Review:** evaluate against the supplied brief and established direction. Do not impose a new style simply because another composition is possible.
+
+The behavioral, accessibility, responsive, and secondary-copy requirements below apply to every direction. They do not prescribe a restrained palette, compact density, or minimalist aesthetic.
 
 ## Inspect before changing
 
